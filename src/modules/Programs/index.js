@@ -14,8 +14,8 @@ const Programs = () => {
       const params = {
         limit: 100,
         ...(launchYear && {launch_year: launchYear}),
-        ...(isLaunch === 'true' && {launch_success: isLaunch}),
-        ...(isLanding === 'true' && {land_success: isLanding})
+        ...(isLaunch && {launch_success: isLaunch}),
+        ...(isLanding && {land_success: isLanding})
       };
       try {
         const data = await axios.get('/launches', {params});
