@@ -27,7 +27,7 @@ const FilterBar = ({onUpdateParams}) => {
           <div className='filterTitle'>Launch Year</div>
           <div className='filterOptions'>
             {years.map((year, index) => (
-              <div className='filterOption'>
+              <div className='filterOption' key={index}>
                 <button key={index} className={`filter-option-button pointer ${launchYear === year ? 'active' : ''}`}
                         onClick={() => setLaunchYear(launchYear === year ? '' : year)}>{year}</button>
               </div>

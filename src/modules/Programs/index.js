@@ -11,8 +11,6 @@ const Programs = () => {
     setParams(updatedParams)
   };
 
-
-
   useEffect(() => {
     const getProgramsList = async () => {
       try {
