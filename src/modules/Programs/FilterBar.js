@@ -16,7 +16,7 @@ const FilterBar = ({onUpdateParams}) => {
       ...(isLanding === 'true' && {land_success: launchYear})
     };
     onUpdateParams(params);
-  }, [launchYear, isLanding, isLanding])
+  }, [launchYear, isLaunch, isLanding, onUpdateParams])
 
   return (
     <div className='filter-root'>
@@ -39,7 +39,7 @@ const FilterBar = ({onUpdateParams}) => {
           <div className='filterTitle'>Successful Launch</div>
           <div className='filterOptions'>
             {options.map((option, index) => (
-              <div className='filterOption'>
+              <div className='filterOption' key={index}>
                 <button key={index} className={`filter-option-button pointer ${isLaunch === option ? 'active' : ''}`}
                         onClick={() => setIsLaunch(isLaunch === option ? '' : option)}>{option}</button>
               </div>
@@ -51,7 +51,7 @@ const FilterBar = ({onUpdateParams}) => {
           <div className='filterTitle'>Successful Landing</div>
           <div className='filterOptions'>
             {options.map((option, index) => (
-              <div className='filterOption'>
+              <div className='filterOption' key={index}>
                 <button key={index} className={`filter-option-button pointer ${isLanding === option ? 'active' : ''}`}
                         onClick={() => setIsLanding(isLanding === option ? '' : option)}>{option}</button>
               </div>
