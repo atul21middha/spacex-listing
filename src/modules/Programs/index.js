@@ -5,14 +5,18 @@ import ProgramsList from "./ProgramsList";
 
 const Programs = () => {
   const [programsList, setProgramsList] = useState([]);
-  const [params, setParams] = useState({limit: 100});
-
-  const onUpdateParams = (updatedParams) => {
-    setParams(updatedParams)
-  };
+  const [launchYear, setLaunchYear] = useState('');
+  const [isLaunch, setIsLaunch] = useState('');
+  const [isLanding, setIsLanding] = useState('');
 
   useEffect(() => {
     const getProgramsList = async () => {
+      const params = {
+        limit: 100,
+        ...(launchYear && {launch_year: launchYear}),
+        ...(isLaunch === 'true' && {launch_success: isLaunch}),
+        ...(isLanding === 'true' && {land_success: launchYear})
+      };
       try {
         const data = await axios.get('/launches', {params});
         setProgramsList(data.data);
@@ -21,18 +25,21 @@ const Programs = () => {
       }
     };
     getProgramsList();
-  }, [params]);
+  }, [launchYear, isLanding, isLaunch]);
 
   return (
     <div>
       <h2>SpaceX Launch Programs</h2>
-      {programsList.length > 0 ?
+
       <div className='content'>
-        <FilterBar onUpdateParams={onUpdateParams} />
-        <ProgramsList programsList={programsList}/>
-      </div> :
-        <div className='no-programs'>No Programs Listed</div>
-      }
+        <FilterBar launchYear={launchYear} isLaunch={isLaunch} isLanding={isLanding} setLaunchYear={setLaunchYear}
+                   setIsLaunch={setIsLaunch} setIsLanding={setIsLanding}/>
+        {programsList.length > 0 ?
+          <ProgramsList programsList={programsList} isLaunch={isLaunch} isLanding={isLanding}/>
+          :
+          <div className='no-programs'>No Programs Listed</div>
+        }
+      </div>
     </div>
   );
 };
