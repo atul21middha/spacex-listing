@@ -1,0 +1,139 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F2F2F2;
+}
+
+.card {
+    padding: 16px;
+    background-color: #fff;
+    margin-bottom: 20px;
+
+}
+
+.filterCategory {
+    margin: 20px;
+}
+
+.filterTitle {
+    text-align: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 2px;
+}
+
+.filterOptions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.filterOption {
+    width: 42%;
+    margin: 5px;
+    text-align: center;
+}
+
+.filter-option-button {
+    background-color: #C5E09B;
+    border-radius: 4px;
+    border: none;
+    padding: 4px 8px;
+}
+
+.filter-option-button.active {
+    background-color: red;
+}
+
+
+.mission-name {
+    color: #2A3688;
+}
+
+.display-flex {
+    display: flex;
+    align-items: center;
+    margin: 0
+}
+
+.dot {
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    background-color: #2A3688;
+}
+
+.mission-id-text {
+    margin-left: 10px;
+}
+
+.marginTop {
+    margin-top: 8px;
+}
+
+.text-highlight {
+    font-weight: bold;
+}
+
+.program-item {
+    margin-bottom: 16px;
+}
+
+.program-item-card {
+    background-color: #fff;
+    padding: 16px;
+    height: 100%;
+}
+
+.program-card-image {
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    text-align: center;
+}
+
+@media (min-width: 700px) {
+    .filter-root {
+        padding-right: 16px;
+        width: 50%;
+    }
+
+    .content {
+        display: flex;
+    }
+}
+
+@media (min-width: 1024px) {
+    .content {
+        display: flex;
+    }
+
+    .filter-root {
+        padding-right: 16px;
+        min-width: 250px;
+        max-width: 260px;
+    }
+
+    .programs-list {
+        display: flex;
+        flex-wrap: wrap;
+        flex-grow: 1;
+    }
+
+    .program-item {
+        width: 25%;
+        padding-right: 8px;
+        padding-left: 8px;
+        margin-bottom: 16px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .content {
+        display: flex;
+        justify-content: center;
+    }
+}
