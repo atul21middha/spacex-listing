@@ -44,7 +44,8 @@ body {
 }
 
 .filter-option-button.active {
-    background-color: red;
+    background-color: #7CBA01;
+    border:none;
 }
 
 
@@ -136,4 +137,8 @@ body {
         display: flex;
         justify-content: center;
     }
+}
+
+.pointer {
+    cursor: pointer
 }

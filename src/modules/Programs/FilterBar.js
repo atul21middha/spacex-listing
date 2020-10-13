@@ -1,9 +1,23 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 const years = ['2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'];
 const options = ['true', 'false'];
 
-const FilterBar = ({launchYear, setLaunchYear, isLaunch, setIsLaunch, isLanding, setIsLanding}) => {
+const FilterBar = ({onUpdateParams}) => {
+  const [launchYear, setLaunchYear] = useState('');
+  const [isLaunch, setIsLaunch] = useState('');
+  const [isLanding, setIsLanding] = useState('');
+
+  useEffect(() => {
+    const params = {
+      limit: 100,
+      ...(launchYear && {launch_year: launchYear}),
+      ...(isLaunch === 'true' && {launch_success: isLaunch}),
+      ...(isLanding === 'true' && {land_success: launchYear})
+    };
+    onUpdateParams(params);
+  }, [launchYear, isLanding, isLanding])
+
   return (
     <div className='filter-root'>
       <div className='card'>
@@ -14,8 +28,8 @@ const FilterBar = ({launchYear, setLaunchYear, isLaunch, setIsLaunch, isLanding,
           <div className='filterOptions'>
             {years.map((year, index) => (
               <div className='filterOption'>
-                <button key={index} className={`filter-option-button ${launchYear === year ? 'active' : ''}`}
-                        onClick={() => setLaunchYear(year)}>{year}</button>
+                <button key={index} className={`filter-option-button pointer ${launchYear === year ? 'active' : ''}`}
+                        onClick={() => setLaunchYear(launchYear === year ? '' : year)}>{year}</button>
               </div>
             ))}
           </div>
@@ -26,8 +40,8 @@ const FilterBar = ({launchYear, setLaunchYear, isLaunch, setIsLaunch, isLanding,
           <div className='filterOptions'>
             {options.map((option, index) => (
               <div className='filterOption'>
-                <button key={index} className={`filter-option-button ${isLaunch === option ? 'active' : ''}`}
-                        onClick={() => setIsLaunch(option)}>{option}</button>
+                <button key={index} className={`filter-option-button pointer ${isLaunch === option ? 'active' : ''}`}
+                        onClick={() => setIsLaunch(isLaunch === option ? '' : option)}>{option}</button>
               </div>
             ))}
           </div>
@@ -38,8 +52,8 @@ const FilterBar = ({launchYear, setLaunchYear, isLaunch, setIsLaunch, isLanding,
           <div className='filterOptions'>
             {options.map((option, index) => (
               <div className='filterOption'>
-                <button key={index} className={`filter-option-button ${isLanding === option ? 'active' : ''}`}
-                        onClick={() => setIsLanding(option)}>{option}</button>
+                <button key={index} className={`filter-option-button pointer ${isLanding === option ? 'active' : ''}`}
+                        onClick={() => setIsLanding(isLanding === option ? '' : option)}>{option}</button>
               </div>
             ))}
           </div>
