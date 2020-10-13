@@ -142,3 +142,11 @@ body {
 .pointer {
     cursor: pointer
 }
+
+.no-programs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px
+}

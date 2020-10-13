@@ -26,10 +26,13 @@ const Programs = () => {
   return (
     <div>
       <h2>SpaceX Launch Programs</h2>
+      {programsList.length > 0 ?
       <div className='content'>
         <FilterBar onUpdateParams={onUpdateParams} />
         <ProgramsList programsList={programsList}/>
-      </div>
+      </div> :
+        <div className='no-programs'>No Programs Listed</div>
+      }
     </div>
   );
 };
